@@ -1,5 +1,5 @@
 .App {
-  font-size: 18px;
+  font-size: 28px;
 }
 .wrap {
   position: relative;
@@ -17,12 +17,13 @@
   margin: 0 20px 20px 20px;
   background: white;
   position: relative;
+
 }
 .card-image {
   display: flex;
   flex-direction: column;
   box-shadow: none;
-  margin: 0 2rem 0 0;
+  margin: 0 1rem 0 0;
   border: 0;
   padding: 0;
   flex: 1 0 60%;
@@ -39,10 +40,18 @@
 .comments-item {
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+  width: 99%;
 }
 .comments-item-delete {
-  padding: 5px 15px 5px 5px;
+   vertical-align	: middle;
+  color: red;
+  position: relative;
   cursor: pointer;
+  bottom: 4px;
+  padding: 2px 0;
+  outline: none;
+  resize: vertical;
 }
 .button-controls {
   display: flex;
@@ -69,6 +78,7 @@ button {
   color: #125688;
   transition: all 0.2s;
   box-sizing: padding-box;
+  cursor: pointer;
 }
 button hover {
   border-color: #125688;
@@ -77,11 +87,23 @@ button hover {
 input {
   width: 100%;
   border: 0;
+  padding: 8px 0;
+  /* border-bottom: 1px solid #f2f2f2; */
+  outline: none;
+  resize: vertical;
+
+}
+
+.input-create {
+  width: 99%;
+  border: 0;
   padding: 10px 0;
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 2px solid #f2f2f2;
+  border-top: 2px solid #f2f2f2;
   outline: none;
   resize: vertical;
 }
+
 .loader-styles {
   position: absolute;
   left: 50%;

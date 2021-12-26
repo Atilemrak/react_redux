@@ -20,21 +20,20 @@ function Comments(props) {
         e.preventDefault();
         const id = uniqid();
         dispatch(comments_Create(textComments, id));
+        setTextComments('');
     }
 
     useEffect(() => {
         dispatch(comments_load())
-        
     }, []);
 
     return ( 
         <div className="card-comments">
             <form onSubmit={hanldeSubmit} className="comments-item-create">
-                <input type="text" value={textComments} onChange={handleInput}/>
+                <input className="input-create" type="text" value={textComments} onChange={handleInput}/>
                 <input type="submit" hidden/>
             </form>
             {comments.length > 0 && comments.map((res) => {
-                // console.log(res)
                 return <SingleComment key={res.id} data={res}/>
             })}
         </div>

@@ -1,4 +1,4 @@
-import { decrement, increment, inputText, commentsCreate, commentsUpdate, commentsDelete, commentsLoad, loaderDisplayOn, loaderDisplayOff } from "./type";
+import { decrement, increment, inputText, commentsCreate, commentsUpdate, commentsDelete, commentsLoad, loaderDisplayOn, loaderDisplayOff, errorDisplayOn, errorDisplayOff } from "./type";
 
 export function incrementLikes() {
     return {
@@ -24,7 +24,6 @@ export function comments_Create(text, id) {
     return {
         type: commentsCreate,
         data: { text, id }
-       
     }
 }
 
@@ -32,31 +31,54 @@ export function comments_Update(text, id) {
     return {
         type: commentsUpdate,
         data: { text, id }
-       
     }
 }
 export function comments_Delete(id) {
     return {
         type: commentsDelete,
         id
-       
     }
+}
+
+export function errorOn(text) {
+    return dispatch => {
+        dispatch({
+            type: errorDisplayOn,
+            text
+        });
+        setTimeout(() => {
+            dispatch(errorOff());
+        }, 2000)
+    }
+}
+
+export function errorOff() {
+    return {
+        type: errorDisplayOff
+    }
+   
 }
 
 export function comments_load() {
     return async dispatch => {
-        dispatch(loaderOn());
-        const response = await fetch('https://jsonplaceholder.typicode.com/comments?_limit=10');
-         const jsonData = await response.json();
+        try {
+            dispatch(loaderOn());
+            const response = await fetch('https://jsonplaceholder.typicode.com/comments?_limit=10');
+            const jsonData = await response.json();
 
-         setTimeout(() => {
-            dispatch({
-                type: commentsLoad,
-                data: jsonData
-            });
+            setTimeout(() => {
+                dispatch({
+                    type: commentsLoad,
+                    data: jsonData
+                });
+                dispatch(loaderOff());
+            }, 1000)
+        }
+        catch (err) {
+            dispatch(errorOn('ошибка:', err));
+            // console.log(err);
             dispatch(loaderOff());
-         }, 1000)
-         
+        }
     }
 }
 

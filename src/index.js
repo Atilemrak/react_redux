@@ -9,11 +9,14 @@ import { rootReducer } from './redux/rootReducer';
 
 
 import './index.css';
+import { spamFilter } from './redux/midleware';
+
 
 
 const store = createStore(rootReducer, compose(
   applyMiddleware(
-    thunk
+    thunk,
+    spamFilter
   ), 
   window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f 
 ));

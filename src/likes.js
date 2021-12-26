@@ -6,7 +6,7 @@ function Likes(props) {
     return (
         <div className='button-controls'>
             <button onClick={props.onIncrementLikes}> ♥ {props.likes}</button>
-            <button onClick={props.onDecrementLikes}>  👎 Dislike</button>
+            <button onClick={props.onDecrementLikes}>  👎</button>
         </div> 
     );
     

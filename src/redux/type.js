@@ -7,3 +7,6 @@ export const commentsDelete = 'commentsDelete';
 export const commentsLoad = 'commentsLoad';
 export const loaderDisplayOn = 'loaderDisplayOn';
 export const loaderDisplayOff = 'loaderDisplayOff';
+export const errorDisplayOn = 'errorDisplayOn';
+export const errorDisplayOff = 'errorDisplayOff';
+

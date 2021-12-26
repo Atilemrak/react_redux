@@ -1,7 +1,8 @@
-import { loaderDisplayOff, loaderDisplayOn } from "./type";
+import { loaderDisplayOff, loaderDisplayOn, errorDisplayOn, errorDisplayOff } from "./type";
 
 const initialState = {
-    loading: false
+    loading: false,
+    error: null
 };
 
 export const loaderReducer = (state = initialState, action) =>  {
@@ -17,6 +18,17 @@ export const loaderReducer = (state = initialState, action) =>  {
         return {
             ...state, 
            loading: false
+        } 
+
+        case errorDisplayOn : 
+        return {
+            ...state, 
+           error: action.text
+        } 
+        case errorDisplayOff : 
+        return {
+            ...state, 
+           error: null
         } 
         
         default: {
